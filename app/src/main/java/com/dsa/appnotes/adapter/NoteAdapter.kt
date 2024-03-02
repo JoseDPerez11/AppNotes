@@ -47,7 +47,7 @@ class NoteAdapter: RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         holder.itemBinding.noteDesc.text = currentNote.noteDesc
 
         holder.itemView.setOnClickListener {
-            
+
         }
     }
 
