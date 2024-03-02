@@ -2,10 +2,12 @@ package com.dsa.appnotes.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dsa.appnotes.databinding.NoteLayoutBinding
+import com.dsa.appnotes.fragments.HomeFragmentDirections
 import com.dsa.appnotes.model.Note
 
 class NoteAdapter: RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
@@ -47,7 +49,8 @@ class NoteAdapter: RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         holder.itemBinding.noteDesc.text = currentNote.noteDesc
 
         holder.itemView.setOnClickListener {
-
+            val direction = HomeFragmentDirections.actionHomeFragmentToEditNoteFragment(currentNote)
+            it.findNavController().navigate(direction)
         }
     }
 
