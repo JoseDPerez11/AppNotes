@@ -46,14 +46,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         notesViewModel = (activity as MainActivity).noteViewModel
-        setupRecyclerView()
+        setupHomeRecyclerView()
 
         binding.addNoteFab.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment)
         }
     }
 
-    private fun setupRecyclerView() {
+    private fun setupHomeRecyclerView() {
 
         noteAdapter = NoteAdapter()
         binding.homeRecyclerView.apply {
@@ -70,7 +70,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         }
     }
 
-    private fun updateUI(note: List<Note>) {
+    private fun updateUI(note: List<Note>?) {
         if (note != null) {
             if (note.isNotEmpty()) {
                 binding.emptyNotesImage.visibility = View.GONE
